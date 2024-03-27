@@ -18,4 +18,4 @@ jobs:
 
     - name: Move Configuration File
       run: |
-        mv -f ./script/lazy_group.conf ./conf/lazy_group.conf
+        mv -f /script/lazy_group.conf /conf/lazy_group.conf
