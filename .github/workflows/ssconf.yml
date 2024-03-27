@@ -15,4 +15,7 @@ jobs:
         cd script
         chmod +x script.sh
         ./script.sh
-        mv -f lazy_group.conf ../conf/lazy_group.conf
+
+    - name: Move Configuration File
+      run: |
+        mv -f ./script/lazy_group.conf ./conf/lazy_group.conf
