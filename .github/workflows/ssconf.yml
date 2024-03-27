@@ -1,8 +1,9 @@
 name: my_ss_conf
 
 on:
-  schedule:
-    - cron: '0 3 * * 3'  # 每周三的凌晨3点执行
+  push:
+    branches:
+      - main
 
 jobs:
   run_script:
