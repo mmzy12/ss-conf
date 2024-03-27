@@ -1,0 +1,15 @@
+name: my_ss_conf_test
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Run Shell Script
+      run: |
+        cd ss-conf/script/
+        bash ssconf.sh
+        mv -f lazy_group.conf ../lazy_group.conf
