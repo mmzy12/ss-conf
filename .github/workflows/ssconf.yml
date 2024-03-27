@@ -1,0 +1,19 @@
+name: Run Shell Script Weekly
+
+on:
+  schedule:
+    - cron: '0 3 * * 3'  # 每周三的凌晨3点执行
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Run Shell Script
+      run: |
+        cd ss-conf/script/
+        bash ssconf.sh
+        mv -f lazy_group.conf ../lazy_group.conf
