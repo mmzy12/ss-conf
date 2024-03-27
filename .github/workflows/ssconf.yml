@@ -15,4 +15,5 @@ jobs:
         cd script
         chmod +x script.sh
         ./script.sh
-        mv -f ${GITHUB_WORKSPACE}/script/lazy_group.conf ${GITHUB_WORKSPACE}/conf/
+        ls
+        mv -f lazy_group.conf ${GITHUB_WORKSPACE}/conf/lazy_group.conf
