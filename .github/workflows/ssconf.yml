@@ -1,4 +1,4 @@
-name: Run Shell Script Weekly
+name: my_ss_conf
 
 on:
   schedule:
