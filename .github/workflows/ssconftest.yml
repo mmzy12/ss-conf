@@ -1,9 +1,9 @@
-name: my_ss_conf_test
+name: My SS Conf Test
 
-n:
+on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   run_script:
