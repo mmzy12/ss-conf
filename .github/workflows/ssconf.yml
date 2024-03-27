@@ -1,19 +1,23 @@
-name: my_ss_conf
+name: Run script
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  run_script:
+  script-and-move:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      
-    - name: Run Shell Script
+
+    - name: Set up Environment
+      run: sudo apt-get update && sudo apt-get install -y wget
+
+    - name: Execute Shell Script
       run: |
-        bash script/ssconf.sh
-        mv -f lazy_group.conf conf/lazy_group.conf
+        chmod +x ./script/script.sh
+        ./script/script.sh
+
+    - name: Move Configuration File
+      run: |
+        mv -f lazy_group.conf ./conf/lazy_group.conf
