@@ -17,4 +17,4 @@ jobs:
       run: |
         cd script/
         bash ssconf.sh
-        mv -f lazy_group.conf conf/lazy_group.conf
+        mv -f script/lazy_group.conf conf/lazy_group.conf
