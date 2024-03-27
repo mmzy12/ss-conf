@@ -14,6 +14,5 @@ jobs:
       
     - name: Run Shell Script
       run: |
-        cd ss-conf/script/
-        bash ssconf.sh
-        mv -f lazy_group.conf ../lazy_group.conf
+        bash script/ssconf.sh
+        mv -f script/lazy_group.conf conf/lazy_group.conf
