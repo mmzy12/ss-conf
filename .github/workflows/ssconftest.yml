@@ -1,5 +1,10 @@
 name: my_ss_conf_test
 
+n:
+  push:
+    branches:
+      - main 
+
 jobs:
   run_script:
     runs-on: ubuntu-latest
