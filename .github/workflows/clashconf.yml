@@ -1,4 +1,4 @@
-name: clashconf update
+#name: clashconf update
 
 on:
   push:
