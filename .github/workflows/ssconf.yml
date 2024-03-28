@@ -2,8 +2,10 @@ name: ssconf update
 
 #运行模式
 on:
+  push: 
   schedule:
-    - cron:  '0 3 * * 3'
+    #北京时间 每周三凌晨三点执行
+    - cron: '0 19 * * 2' 
 
 #赋予权限
 permissions:
