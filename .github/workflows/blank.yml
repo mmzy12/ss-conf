@@ -1,0 +1,32 @@
+name: clashconf update
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 每周三凌晨三点执行
+    - cron: '0 19 * * 2'
+
+permissions:
+  contents: write
+
+jobs:
+  update-conf:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          cd clashconf
+          chmod 755 subconf.sh
+          ./subconf.sh
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add clashconf/clashconf.ini
+          git commit -m "Automatically update clashconf.ini"
+          git push
