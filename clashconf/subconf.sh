@@ -18,7 +18,8 @@ done
 # 修改配置文件
 
 # 在插入内容
-sed -i "/;设置规则标志位/r $ruleset_file" clashconf.ini
+sed -i '0,/^;设置规则标志位/ { /^;设置规则标志位/ r '"$ruleset_file"'
+}' clashconf.ini
 
 # 插入内容
 sed -i "/custom_proxy_group=♻️ 自动选择\`url-test\`.\*\`http:\/\/www.gstatic.com\/generate_204\`300,,50/r $proxy_group_file" clashconf.ini
