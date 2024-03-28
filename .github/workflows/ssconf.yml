@@ -25,7 +25,6 @@ jobs:
       - name: Build
         run: |
             cd script
-            ls
             chmod 755 script.sh
             ./script.sh
 
