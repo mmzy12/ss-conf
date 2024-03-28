@@ -30,9 +30,6 @@ jobs:
 
       - name: Ensure conf directory exists
         run: mkdir -p conf
-             cd conf
-             pwd
-             rm -f *
 
       - name: Move and overwrite lazy_group.conf to conf directory
         run: pwd
