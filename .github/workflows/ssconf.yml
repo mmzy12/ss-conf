@@ -26,7 +26,6 @@ jobs:
           sed -i '/\[Rule\]/a DOMAIN-KEYWORD,liviter.top,BACKHOME' lazy_group.conf
           sed -i '/\[Rule\]/a DOMAIN-KEYWORD,wxchatproxy.top,DIRECT' lazy_group.conf
           sed -i '/\[Proxy Group\]/a BACKHOME = select,interval=86400,timeout=5,url=http://www.gstatic.com/generate_204,policy-regex-filter=内网|wire' lazy_group.conf
-          sed -i '/\[Host\]/a *.liviter.top=223.5.5.5' lazy_group.conf
 
       - name: Ensure conf directory exists
         run: mkdir -p conf
