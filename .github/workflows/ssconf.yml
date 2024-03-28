@@ -1,8 +1,8 @@
 name: Update Configuration
 
-on:
-  schedule:
-    - cron:  '0 3 * * 3'
+on:[push]
+  #schedule:
+    #- cron:  '0 3 * * 3'
 
 permissions:
   contents: write
