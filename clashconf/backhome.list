@@ -1,6 +1,6 @@
 #回家规则
 IP-CIDR,192.168.8.0/24
 DOMAIN-SUFFIX,069.aiplayonilne.top
-11.0.0.0/8
-12.0.0.0/8
-13.0.0.0/8
+IP-CIDR,11.0.0.0/8
+IP-CIDR,12.0.0.0/8
+IP-CIDR,13.0.0.0/8
