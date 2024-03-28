@@ -1,10 +1,9 @@
 name: ssconf update
 
 #运行模式
-on: [push]
-
-  #schedule:
-    #- cron:  '0 3 * * 3'
+on:
+  schedule:
+    - cron:  '0 3 * * 3'
 
 #赋予权限
 permissions:
