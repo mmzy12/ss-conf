@@ -18,8 +18,8 @@ done
 
 # 修改配置文件
 
-# 删除skip-proxy中的192.168.0.0/16
-sed -i '/^skip-proxy = /s/192\.168\.0\.0\/16,//' lazy_group.conf
+# 删除局域网相关的192.168.0.0/16
+sed -i 's/192\.168\.0\.0\/16,//' lazy_group.conf
 
 # 在 [Rule] 下插入内容
 sed -i "/\[Rule\]/r $rule_file" lazy_group.conf
