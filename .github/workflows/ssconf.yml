@@ -1,6 +1,6 @@
 name: Update Configuration
 
-on: [push]
+on: 
 
   #schedule:
     #- cron:  '0 3 * * 3'
