@@ -1,13 +1,16 @@
-name: Update Configuration
+name: ssconf update
 
-on: 
+#运行模式
+on: [push]
 
   #schedule:
     #- cron:  '0 3 * * 3'
 
+#赋予权限
 permissions:
   contents: write
 
+#指令
 jobs:
   update-conf:
     runs-on: ubuntu-latest
@@ -19,20 +22,17 @@ jobs:
       - name: Setup environment
         run: sudo apt-get update && sudo apt-get install -y wget
 
-      - name: Download lazy_group.conf
-        run: wget https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/lazy_group.conf -O lazy_group.conf
-
-      - name: Insert rules and proxy group
+      - name: Build
         run: |
-          sed -i '/\[Rule\]/a DOMAIN-KEYWORD,liviter.top,BACKHOME' lazy_group.conf
-          sed -i '/\[Rule\]/a DOMAIN-KEYWORD,wxchatproxy.top,DIRECT' lazy_group.conf
-          sed -i '/\[Proxy Group\]/a BACKHOME = select,interval=86400,timeout=5,url=http://www.gstatic.com/generate_204,policy-regex-filter=内网|wire' lazy_group.conf
-          #sed -i '/\[Host\]/a *.liviter.top=223.5.5.5' lazy_group.conf
+            cd script
+            ls
+            chmod 755 script.sh
+            ./script.sh
 
-      - name: Move updated file to conf directory (force overwrite)
+      - name: Move File
         run: |
-          mkdir -p conf
-          mv -f lazy_group.conf conf/lazy_group.conf
+            mkdir -p conf
+            mv -f script/lazy_group.conf conf/lazy_group.conf
 
       - name: Commit and push changes
         run: |
