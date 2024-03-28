@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup environment
-        run: sudo apt-get install -y wget
+        run: sudo apt-get update && sudo apt-get install -y wget
 
       - name: Download lazy_group.conf
         run: wget https://johnshall.github.io/Shadowrocket-ADBlock-Rules-Forever/lazy_group.conf -O lazy_group.conf
@@ -27,18 +27,17 @@ jobs:
           sed -i '/\[Rule\]/a DOMAIN-KEYWORD,liviter.top,BACKHOME' lazy_group.conf
           sed -i '/\[Rule\]/a DOMAIN-KEYWORD,wxchatproxy.top,DIRECT' lazy_group.conf
           sed -i '/\[Proxy Group\]/a BACKHOME = select,interval=86400,timeout=5,url=http://www.gstatic.com/generate_204,policy-regex-filter=内网|wire' lazy_group.conf
+          #sed -i '/\[Host\]/a *.liviter.top=223.5.5.5' lazy_group.conf
 
-      - name: Ensure conf directory exists
-        run: mkdir -p conf
-
-      - name: Move and overwrite lazy_group.conf to conf directory
-        run: pwd
-             mv -f lazy_group.conf conf/lazy_group.conf
+      - name: Move updated file to conf directory (force overwrite)
+        run: |
+          mkdir -p conf
+          mv -f lazy_group.conf conf/lazy_group.conf
 
       - name: Commit and push changes
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
           git add conf/lazy_group.conf
-          git commit -m "Automatically update lazy_group.conf" -a || echo "No changes to commit"
+          git commit -m "Automatically update lazy_group.conf" || echo "No changes to commit"
           git push
